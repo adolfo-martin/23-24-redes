@@ -22,8 +22,30 @@ class Capa1AccesoMedio:
     """
     
     def __init__(self, medio: TipoMedio, tecnologia: TipoTecnologia) -> None:
-        pass
+        self.__medio = medio
+        self.__tecnologia = tecnologia
     
+
+    @property
+    def medio(self):
+        return self.__medio
+    
+    @medio.setter
+    def medio(self, valor: TipoMedio):
+        self.__medio = valor
+
+    @property
+    def tecnologia(self):
+        return self.__tecnologia
+
+    @tecnologia.setter
+    def tecnologia(self, valor: TipoTecnologia):
+        self.__tecnologia = valor
+
+
+    # equivalente al toString de Java
+    def __repr__(self) -> str:
+        return f'(Capa1AccesoMedio) medio: {self.__medio} tecnologia: {self.__tecnologia}'
 
     # public constructor() {}
     # None ====== void
