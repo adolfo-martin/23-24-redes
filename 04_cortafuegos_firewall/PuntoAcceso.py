@@ -18,7 +18,7 @@ class PuntoAcceso:
 
 
     @property
-    def equipos_filtrados(self) -> TipoFiltrado:
+    def equipos_filtrados(self) -> list[str]:
         return self.__equipos_filtrados
 
     def agregar_equipo_filtrado(self, equipo: str) -> None:
@@ -71,8 +71,32 @@ class PuntoAcceso:
     def equipos_conectados(self) -> list[str]:
         return self.__equipos_conectados
     
-    def añadir_equipo(self, direccion_equipo: str) -> None:
-        self.__equipos_conectados.append(direccion_equipo)
+
+    def conectar_equipo(self, direccion_equipo: str, contraseña: str) -> None:
+        if self.esta_cortafuegos_activado:
+            if self.tipo_filtrado == TipoFiltrado.LISTA_BLANCA:
+                if self.equipos_filtrados.count(direccion_equipo) != 0:
+                    self.__equipos_conectados.append(direccion_equipo)
+                else:
+                    raise PuntoAccesoError('El equipo no está en la lista blanca.')
+            else: # LISTA_NEGRA
+                if self.equipos_filtrados.count(direccion_equipo) == 0:
+                    self.__equipos_conectados.append(direccion_equipo)
+                else:
+                    raise PuntoAccesoError('El equipo está en la lista negra.')
+
+        else: #cortafuegos desactivado
+            if contraseña == self.__contraseña:
+                self.__equipos_conectados.append(direccion_equipo)
+            else:
+                raise PuntoAccesoError('La contraseña no es correcta.')
+
+
+
+
+
+    def desconectar_equipo(self, direccion_equipo: str) -> None:
+        self.equipos_conectados.remove(direccion_equipo)
 
 
 
