@@ -1,12 +1,12 @@
 
-from DireccionLogica import DireccionLogica
+from CuatroOctetos import CuatroOctetos
 from DireccionLogicaPrivada import DireccionLogicaPrivada
 
 
-class DireccionLogicaPublica(DireccionLogica):
+class DireccionLogicaPublica(CuatroOctetos):
     
-    def es_direccion_correcta(direccion_logica: str) -> bool:
-        if not DireccionLogica.es_direccion_correcta(direccion_logica):
+    def es_formato_correcto(direccion_logica: str) -> bool:
+        if not CuatroOctetos.es_formato_correcto(direccion_logica):
             return False
         
-        return not DireccionLogicaPrivada.es_direccion_correcta(direccion_logica)
+        return not DireccionLogicaPrivada.es_formato_correcto(direccion_logica)

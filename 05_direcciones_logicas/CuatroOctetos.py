@@ -1,10 +1,13 @@
-class DireccionLogica:
+class CuatroOctetos:
 
-    def __init__(self, direccion_logica: str) -> None:
-        pass
+    def __init__(self, octetos: str) -> None:
+        if not CuatroOctetos.es_formato_correcto(octetos):
+            raise CuatroOctetosError(f'El formato del octeto no es correcto: {octetos}')
+
+        self.octetos = octetos
 
 
-    def es_direccion_correcta(direccion_logica: str) -> bool:
+    def es_formato_correcto(direccion_logica: str) -> bool:
         if not isinstance(direccion_logica, str):
             return False
 
@@ -21,3 +24,6 @@ class DireccionLogica:
                 return False
                 
         return True
+    
+
+class CuatroOctetosError(Exception): ...

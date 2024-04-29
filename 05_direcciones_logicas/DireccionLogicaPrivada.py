@@ -1,10 +1,10 @@
-from DireccionLogica import DireccionLogica
+from CuatroOctetos import CuatroOctetos
 
 
-class DireccionLogicaPrivada(DireccionLogica):
+class DireccionLogicaPrivada(CuatroOctetos):
     
-    def es_direccion_correcta(direccion_logica: str) -> bool:
-        if not DireccionLogica.es_direccion_correcta(direccion_logica):
+    def es_formato_correcto(direccion_logica: str) -> bool:
+        if not CuatroOctetos.es_formato_correcto(direccion_logica):
             return False
         
         if direccion_logica.startswith('10.') or direccion_logica.startswith('192.168.'):
