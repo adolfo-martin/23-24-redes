@@ -17,5 +17,5 @@ class TerminalColors:
     WHITE_WHITE = '\033[0;37;47m'
 
 
-print(TerminalColors.WHITE_BLUE, 'Hola')
-print(TerminalColors.BLACK_WHITE, 'adios')
+# print(TerminalColors.WHITE_BLUE, 'Hola')
+# print(TerminalColors.BLACK_WHITE, 'adios')
